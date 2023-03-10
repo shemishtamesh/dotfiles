@@ -225,10 +225,14 @@ super + ctrl + alt + {h,j,k,l}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
 #
-# diary
+# utility quick launch
 #
 
+# diary
 super + d
     ~/scripts/diary.sh
 
+# sketchpad
+super + shift + d
+    ~/scripts/sketchpad.sh
 

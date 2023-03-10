@@ -19,9 +19,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
 -- quickfix list navigation
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -29,7 +26,7 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- replace current word
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/t/gI<Left><Left><Left><BackSpace>]])
 
 -- make current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -38,11 +35,13 @@ vim.keymap.set("n", "<leader>X", "<cmd>!chmod -x %<CR>", { silent = true })
 -- toggle spell check
 vim.keymap.set("n", "<leader>sc", "<cmd>setlocal spell! spelllang=en_us<CR>")
 
--- common misstypes
-vim.api.nvim_create_user_command("W", "wa", {})
-vim.api.nvim_create_user_command("Q", "qa", {})
-vim.api.nvim_create_user_command("WQ", "wqa", {})
-vim.api.nvim_create_user_command("Wq", "wqa", {})
+-- saving and exiting
+vim.api.nvim_create_user_command("W", "wa!", {})
+vim.api.nvim_create_user_command("Q", "qa!", {})
+vim.api.nvim_create_user_command("Qw", "wqa!", {})
+vim.api.nvim_create_user_command("QW", "wqa!", {})
+vim.api.nvim_create_user_command("Wq", "wqa!", {})
+vim.api.nvim_create_user_command("WQ", "wqa!", {})
 
 -- stop highlighting
 vim.keymap.set("n", "<leader>h", "<cmd>noh<CR>")
