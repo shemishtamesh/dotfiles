@@ -25,5 +25,8 @@ return function(_, bufnr)
     end)
     vim.keymap.set('n', '<Leader>dr', require('dap').run_last)
     vim.keymap.set('n', '<Leader>dq', require('dap').disconnect)
+
+    -- telescope keymaps
+    vim.keymap.set('n', '<Leader>fd', require('telescope.builtin').diagnostics)
 end
 

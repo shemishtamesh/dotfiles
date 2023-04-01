@@ -28,8 +28,8 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.softtabstop = -1 -- If negative, shiftwidth value is used
 vim.o.list = true
-vim.o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
--- vim.o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
+vim.o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂,leadmultispace:│   "
+--vim.o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
 -- vim.o.formatoptions = 'qrn1'
 
 -- color the 80th color, a hint for when a line is too long

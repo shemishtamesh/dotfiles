@@ -23,15 +23,6 @@ video_to_gif() {
     ffmpeg -i "$1" -i - -filter_complex paletteuse "$2"
 }
 
-countdown() {
-  notify-send --app-name="screenshot" "Screenshot" "Recording in 3" -t 1000
-  sleep 1
-  notify-send --app-name="screenshot" "Screenshot" "Recording in 2" -t 1000
-  sleep 1
-  notify-send --app-name="screenshot" "Screenshot" "Recording in 1" -t 1000
-  sleep 1
-}
-
 crtc() {
   notify-send --app-name="screenshot" "Screenshot" "Select a region to capture"
   ffcast -q "$(slop -n -f '-g %g ')" png /tmp/screenshot_clip.png
@@ -63,7 +54,7 @@ cstf() {
 rgrtf() {
   notify-send --app-name="screenshot" "Screenshot" "Select a region to record"
   dt=$1
-  ffcast -q "$(slop -n -f '-g %g ' && countdown)" rec /tmp/screenshot_gif.mp4
+  ffcast -q "$(slop -n -f '-g %g ')" rec /tmp/screenshot_gif.mp4
   notify-send --app-name="screenshot" "Screenshot" "Converting to gif… (can take a while)"
   video_to_gif /tmp/screenshot_gif.mp4 "$screenshot_directory/$dt.gif"
   rm /tmp/screenshot_gif.mp4
@@ -71,7 +62,6 @@ rgrtf() {
 }
 
 rgstf() {
-  countdown
   dt=$1
   ffcast -q rec /tmp/screenshot_gif.mp4
   notify-send --app-name="screenshot" "Screenshot" "Converting to gif… (can take a while)"
@@ -83,12 +73,11 @@ rgstf() {
 rvrtf() {
   notify-send --app-name="screenshot" "Screenshot" "Select a region to record"
   dt=$1
-  ffcast -q "$(slop -n -f '-g %g ' && countdown)" rec "$screenshot_directory/$dt.mp4"
+  ffcast -q "$(slop -n -f '-g %g ')" rec "$screenshot_directory/$dt.mp4"
   notify-send --app-name="screenshot" "Screenshot" "Saved to ${screenshot_directory//${HOME}/~}"
 }
 
 rvstf() {
-  countdown
   dt=$1
   ffcast -q rec "$screenshot_directory/$dt.mp4"
   notify-send --app-name="screenshot" "Screenshot" "Saved to ${screenshot_directory//${HOME}/~}"
@@ -100,15 +89,15 @@ stop_recording() {
 }
 
 get_options() {
-  echo "  Region  Clip"
-  echo "  Region  File"
-  echo "  Screen  Clip"
-  echo "  Screen  File"
-  echo "  Region  File (GIF)"
-  echo "  Screen  File (GIF)"
-  echo "  Region  File (MP4)"
-  echo "  Screen  File (MP4)"
-  echo "stop recording"
+  echo " Region  Clip"
+  echo " Region  File"
+  echo " Screen  Clip"
+  echo " Screen  File"
+  echo " Region  File (GIF)"
+  echo " Screen  File (GIF)"
+  echo " Region  File (MP4)"
+  echo " Screen  File (MP4)"
+  echo " stop recording"
 }
 
 check_deps() {
@@ -202,31 +191,31 @@ main() {
 
   # run the selected command
   case $choice in
-    '  Region  Clip')
+    ' Region  Clip')
       crtc
       ;;
-    '  Region  File')
+    ' Region  File')
       crtf "$dt"
       ;;
-    '  Screen  Clip')
+    ' Screen  Clip')
       cstc
       ;;
-    '  Screen  File')
+    ' Screen  File')
       cstf "$dt"
       ;;
-    '  Region  File (GIF)')
+    ' Region  File (GIF)')
       rgrtf "$dt"
       ;;
-    '  Screen  File (GIF)')
+    ' Screen  File (GIF)')
       rgstf "$dt"
       ;;
-    '  Region  File (MP4)')
+    ' Region  File (MP4)')
       rvrtf "$dt"
       ;;
-    '  Screen  File (MP4)')
+    ' Screen  File (MP4)')
       rvstf "$dt"
       ;;
-    'stop recording')
+    ' stop recording')
       stop_recording
       exit 0
       ;;

@@ -120,8 +120,16 @@ packer.startup(function(use)
     use {"vimwiki/vimwiki"}
     use {"tbabej/taskwiki"}
 
-    --use("folke/trouble.nvim") -- inlay errors
+    use("folke/trouble.nvim") -- inlay errors
     use("nvim-lualine/lualine.nvim") -- A better statusline
+
+    use {'stevearc/dressing.nvim'}
+
+    use {'folke/zen-mode.nvim'}
+
+    --use('Aasim-A/scrollEOF.nvim')
+
+    --use {'krady21/compiler-explorer.nvim'}
 
 --    use {
 --      "folke/which-key.nvim",

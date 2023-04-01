@@ -86,9 +86,9 @@ super + shift + Tab
 super + shift + s
     ~/scripts/main.sh
 
-# 
+#
 # dunst
-# 
+#
 
 # notification history
 super + alt + n
@@ -103,11 +103,23 @@ super + shift + n
     dunstctl close-all
 
 #
+# bar hotkeys
+#
+super + p
+    ~/.config/polybar/toggle.sh
+
+#
 # bspwm hotkeys
 #
 
+# show border while pressing super
+{Super_L,Super_R}
+    if [ $(bspc config border_width) = 0 ]; then bspc config border_width 1; fi;
+@{Super_L,Super_R}
+    if [ $(bspc config border_width) = 1 ]; then bspc config border_width 0; fi;
+
 # close and kill selected window
-super + {_,shift + }w
+super + shift + {_,control + }w
     bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -128,7 +140,7 @@ super + g
 
 # set the window state
 super + {t,shift + t,s,f}
-    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+    bspc node -t \~{tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 super + ctrl + shift + {m,l,s,p}
@@ -165,8 +177,8 @@ super + {o,i}
     bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{0-9}
-    bspc {desktop -f,node -d} '^{1-9, 10}'
+super + {_,shift + }{0-9, ctrl + v, XF86AudioPlay, XF86Favorites}
+    bspc {desktop -f,node -d} '^{1-9, 10, 11, 12, 13}'
 
 # select windows in parent space
 super + r
@@ -228,11 +240,15 @@ super + ctrl + alt + {h,j,k,l}
 # utility quick launch
 #
 
+# screen capture
+super + shift + p
+    ~/scripts/take-screenshots.sh
+
 # diary
 super + d
     ~/scripts/diary.sh
 
 # sketchpad
 super + shift + d
-    ~/scripts/sketchpad.sh
+    ~/scripts/whiteboard.sh
 
