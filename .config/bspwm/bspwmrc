@@ -7,7 +7,10 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 bspc monitor -d 0 1 2 3 4 5 6 7 8 9 10 11 12
 
 bspc config window_gap           0
-bspc config border_width         0
+#bspc config window_gap           24
+bspc config top_padding          24
+bspc config bottom_padding       24
+bspc config border_width         1
 
 bspc config focused_border_color \#FFFFFF
 bspc config normal_border_color \#000000
@@ -24,11 +27,11 @@ bspc rule -a Spotify desktop=11 follow=off focus=off
 bspc rule -a discord desktop=12 follow=off focus=off
 
 # autoruns
-picom -fb --backend glx --fade-exclude 'class_g = "xsecurelock"' &
+picom -b --fade-exclude 'class_g = "xsecurelock"' &
 setxkbmap us &
-sxhkd &
+transmission-daemon &
 nitrogen --restore &
-xbanish & 
+xbanish &
 $HOME/.config/polybar/launch.sh &
 xsetroot -cursor_name left_ptr &
 xss-lock xsecurelock &
@@ -39,6 +42,9 @@ pacwall &
 ~/scripts/enable-mouse-middle-scroll.sh &
 copyq &
 task sync &
+~/scripts/force-hide-ui-elements.sh &
+~/scripts/dynamic-show-ui-elements.sh &
+/usr/lib/kdeconnectd &
 
 notify-send "reloaded configs"
 

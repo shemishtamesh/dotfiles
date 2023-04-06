@@ -18,9 +18,13 @@ alt + space
 super + Return
     alacritty
 
-# start terminal emulator
+# kill all ffmpeg
 super + alt + f
     killall ffmpeg
+
+# start browser
+super + shift + i
+    brave
 
 #
 # media controls
@@ -103,20 +107,28 @@ super + shift + n
     dunstctl close-all
 
 #
-# bar hotkeys
+# ui elements hotkeys
 #
-super + p
-    ~/.config/polybar/toggle.sh
+
+# toggle always show/hide ui elements
+super + b
+    ~/scripts/toggle-force-show-hide-ui-elements.sh
+
+# start show ui elements while pressing super
+super + ctrl + b
+    ~/scripts/dynamic-show-ui-elements.sh
+
+# show ui elements while pressing super if dynamic
+{Super_L,Super_R}
+    ~/scripts/show-ui-elements.sh
+
+@{Super_L,Super_R}
+    ~/scripts/hide-ui-elements.sh
+
 
 #
 # bspwm hotkeys
 #
-
-# show border while pressing super
-{Super_L,Super_R}
-    if [ $(bspc config border_width) = 0 ]; then bspc config border_width 1; fi;
-@{Super_L,Super_R}
-    if [ $(bspc config border_width) = 1 ]; then bspc config border_width 0; fi;
 
 # close and kill selected window
 super + shift + {_,control + }w
@@ -193,7 +205,7 @@ super + ctrl + {_,shift + }r
     bspc node -R {90,-90}
 
 # rebalance selected windows ratio
-super + shift + b
+super + equal
     bspc node -B
 
 #

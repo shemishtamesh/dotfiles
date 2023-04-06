@@ -44,5 +44,9 @@ vim.api.nvim_create_user_command("Wq", "wqa!", {})
 vim.api.nvim_create_user_command("WQ", "wqa!", {})
 
 -- stop highlighting
-vim.keymap.set("n", "<leader>h", "<cmd>noh<CR>")
+vim.keymap.set("n", "<leader>n", "<cmd>noh<CR>")
+
+-- hex mode
+vim.keymap.set("n", "<leader>h", "<cmd>%!xxd<CR>")
+vim.keymap.set("n", "<leader>H", "<cmd>%!xxd -r<CR>")
 
