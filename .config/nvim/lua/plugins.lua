@@ -127,6 +127,8 @@ packer.startup(function(use)
 
     use {'folke/zen-mode.nvim'}
 
+    use {'numToStr/Comment.nvim'}
+
     --use('Aasim-A/scrollEOF.nvim')
 
     --use {'krady21/compiler-explorer.nvim'}

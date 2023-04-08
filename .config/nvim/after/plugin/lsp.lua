@@ -29,7 +29,7 @@ lsp.set_preferences({
     }
 })
 
-lsp.on_attach(require('lsp_on_attach'))
+lsp.on_attach(require('lsp_attach'))
 
 lsp.setup()
 

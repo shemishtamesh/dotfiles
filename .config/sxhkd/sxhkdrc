@@ -2,7 +2,7 @@
 # wm independent hotkeys
 #
 
-# reload configuration files:
+# suspend
 super + shift + Escape
     systemctl suspend
 
@@ -50,9 +50,19 @@ XF86MonBrightness{Down,Up}
 shift + XF86MonBrightness{Down,Up}
     brightnessctl set {10%-,+10%}
 
+# toggle mute microphone
+ctrl + Print
+    $HOME/scripts/toggle_microphone_mute.sh
+
+# push to talk/mute
+Print
+    $HOME/scripts/alter_microphone_state.sh
+@Print
+    $HOME/scripts/return_microphone_state.sh
+
 # mute/unmute microphone
 XF86Favorites
-    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    $HOME/scripts/emoji-picker.sh
 
 #
 # media control
@@ -189,7 +199,7 @@ super + {o,i}
     bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{0-9, ctrl + v, XF86AudioPlay, XF86Favorites}
+super + {_,shift + }{0-9, ctrl + v, XF86AudioPlay, Print}
     bspc {desktop -f,node -d} '^{1-9, 10, 11, 12, 13}'
 
 # select windows in parent space

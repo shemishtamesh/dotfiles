@@ -10,13 +10,13 @@ configuration {
 @theme "/dev/null"
 
 * {
-    bg: #1e1e2eAA;
-    bg-alt: #585b70AA;
-    bg-selected: #313244AA;
-
-    fg: #cdd6f4;
-    fg-alt: #7f849c;
-
+    background: #222;
+    background-color: @background;
+    alt-background: #111;
+    background-selected: #333;
+    foreground: #FFF;
+    foreground-alt: #FFF;
+    text-color: @foreground-alt;
     border: 0;
     margin: 0;
     padding: 0;
@@ -25,18 +25,23 @@ configuration {
 
 window {
     width: 50%;
-    background-color: @bg;
+    background-color: @background;
 }
 
 element {
     padding: 8 12;
     background-color: transparent;
-    text-color: @fg-alt;
+    text-color: @foreground-alt;
+}
+
+element alt {
+    text-color: @foreground;
+    background-color: @alt-background;
 }
 
 element selected {
-    text-color: @fg;
-    background-color: @bg-selected;
+    text-color: @foreground;
+    background-color: @background-selected;
 }
 
 element-text {
@@ -53,31 +58,26 @@ element-icon {
 
 entry {
     padding: 12;
-    background-color: @bg-alt;
-    text-color: @fg;
+    background-color: @alt-background;
+    text-color: @foreground;
 }
 
 inputbar {
     children: [prompt, entry];
-    background-color: @bg;
+    background-color: @background;
 }
 
 listview {
-    background-color: @bg;
+    background-color: @background;
     columns: 1;
     lines: 10;
-}
-
-mainbox {
-    children: [inputbar, listview];
-    background-color: @bg;
 }
 
 prompt {
     enabled: true;
     padding: 12 0 0 12;
-    background-color: @bg-alt;
-    text-color: @fg;
+    background-color: @alt-background;
+    text-color: @foreground;
 }
 
 /* vim: ft=sass

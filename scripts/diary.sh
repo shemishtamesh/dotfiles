@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 bspc rule -a Alacritty state=floating --one-shot
 #alacritty --command nvim -c "execute 'VimwikiMakeDiaryNote' | ZenMode"

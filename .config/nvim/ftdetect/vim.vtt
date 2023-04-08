@@ -1,0 +1,1 @@
+au BufRead,BufNewFile *.vtt                set filetype=yuck

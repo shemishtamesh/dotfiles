@@ -36,12 +36,13 @@ vim.keymap.set("n", "<leader>X", "<cmd>!chmod -x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>sc", "<cmd>setlocal spell! spelllang=en_us<CR>")
 
 -- saving and exiting
-vim.api.nvim_create_user_command("W", "wa!", {})
-vim.api.nvim_create_user_command("Q", "qa!", {})
-vim.api.nvim_create_user_command("Qw", "wqa!", {})
-vim.api.nvim_create_user_command("QW", "wqa!", {})
-vim.api.nvim_create_user_command("Wq", "wqa!", {})
-vim.api.nvim_create_user_command("WQ", "wqa!", {})
+vim.keymap.set('n', 'Q', ':qa<CR>')
+vim.api.nvim_create_user_command("W", "wa", {})
+vim.api.nvim_create_user_command("Q", "qa", {})
+vim.api.nvim_create_user_command("Qw", "wqa", {})
+vim.api.nvim_create_user_command("QW", "wqa", {})
+vim.api.nvim_create_user_command("Wq", "wqa", {})
+vim.api.nvim_create_user_command("WQ", "wqa", {})
 
 -- stop highlighting
 vim.keymap.set("n", "<leader>n", "<cmd>noh<CR>")

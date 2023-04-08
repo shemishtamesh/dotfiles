@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    loaded = true,
+    path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -105,7 +110,7 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\n�\3\0\0\6\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\5\0005\5\a\0>\5\1\0045\5\b\0>\5\2\0045\5\t\0>\5\3\0045\5\n\0>\5\4\4=\4\v\3=\3\f\2B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\6\ngroup\nLabel\bkey\6q\tdesc\tQuit\vaction\6q\ficon_hl\14@variable\ticon\b❌\1\0\6\ngroup\nLabel\bkey\6w\tdesc\fVimwiki\vaction\17VimwikiIndex\ficon_hl\14@variable\ticon\fℹ️ \1\0\6\ngroup\nLabel\bkey\6f\tdesc\nFiles\vaction\25Telescope find_files\ficon_hl\14@variable\ticon\t \1\0\4\bkey\6u\ngroup\14@property\tdesc\15 Update\vaction\17PackerUpdate\16week_header\1\0\0\1\0\1\venable\2\1\0\1\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
+    config = { "\27LJ\2\n�\3\0\0\6\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\5\0005\5\a\0>\5\1\0045\5\b\0>\5\2\0045\5\t\0>\5\3\0045\5\n\0>\5\4\4=\4\v\3=\3\f\2B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\6\ficon_hl\14@variable\tdesc\tQuit\ngroup\nLabel\ticon\b❌\bkey\6q\vaction\6q\1\0\6\ficon_hl\14@variable\tdesc\fVimwiki\ngroup\nLabel\ticon\fℹ️ \bkey\6w\vaction\17VimwikiIndex\1\0\6\ficon_hl\14@variable\tdesc\nFiles\ngroup\nLabel\ticon\t \bkey\6f\vaction\25Telescope find_files\1\0\4\bkey\6u\vaction\17PackerUpdate\ngroup\14@property\tdesc\15 Update\16week_header\1\0\0\1\0\1\venable\2\1\0\1\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,

@@ -27,24 +27,26 @@ bspc rule -a Spotify desktop=11 follow=off focus=off
 bspc rule -a discord desktop=12 follow=off focus=off
 
 # autoruns
-picom -b --fade-exclude 'class_g = "xsecurelock"' &
-setxkbmap us &
-transmission-daemon &
 nitrogen --restore &
-xbanish &
+picom -b --fade-exclude 'class_g = "xsecurelock"' &
+~/scripts/notification-log.sh ~/logs/notifications.log &
 $HOME/.config/polybar/launch.sh &
+xset -r 107  # stop the Print (printscreen) key from repeating, it is used for push to talk/mute
+xset -r 133  # stop the XF86Favorites key from repeating, it is used for dynamic ui hiding
+setxkbmap us &
 xsetroot -cursor_name left_ptr &
 xss-lock xsecurelock &
-killall dunst -q &
-discord &
-~/scripts/notification-log.sh ~/logs/notifications.log &
 pacwall &
-~/scripts/enable-mouse-middle-scroll.sh &
 copyq &
-task sync &
+~/scripts/enable-mouse-middle-scroll.sh &
 ~/scripts/force-hide-ui-elements.sh &
 ~/scripts/dynamic-show-ui-elements.sh &
 /usr/lib/kdeconnectd &
+xbanish &
+task sync &
+discord &
+transmission-daemon &
+killall dunst -q &
 
 notify-send "reloaded configs"
 
