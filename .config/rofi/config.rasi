@@ -10,7 +10,7 @@ configuration {
 @theme "/dev/null"
 
 * {
-    background: #222;
+    background: #222A;
     background-color: @background;
     alt-background: #111;
     background-selected: #333;
@@ -26,6 +26,8 @@ configuration {
 window {
     width: 50%;
     background-color: @background;
+    border-radius: 2%;
+    transparency: "real";
 }
 
 element {
