@@ -31,8 +31,8 @@ nitrogen --restore &
 picom -b --fade-exclude 'class_g = "xsecurelock"' &
 ~/scripts/notification-log.sh ~/logs/notifications.log &
 $HOME/.config/polybar/launch.sh &
-xset -r 107  # stop the Print (printscreen) key from repeating, it is used for push to talk/mute
-xset -r 133  # stop the XF86Favorites key from repeating, it is used for dynamic ui hiding
+xset -r 181  # stop the Cancel key from repeating, it is used for push to talk/mute
+xset -r 133  # stop the super key from repeating, it is used for dynamic ui hiding
 setxkbmap us &
 xsetroot -cursor_name left_ptr &
 xss-lock xsecurelock &
@@ -40,13 +40,14 @@ pacwall &
 copyq &
 ~/scripts/enable-mouse-middle-scroll.sh &
 ~/scripts/force-hide-ui-elements.sh &
-~/scripts/dynamic-show-ui-elements.sh &
+~/scripts/force-show-ui-elements.sh &
 /usr/lib/kdeconnectd &
 xbanish &
 task sync &
 discord &
 transmission-daemon &
-killall dunst -q &
+lxsession &
 
+killall dunst -q
 notify-send "reloaded configs"
 

@@ -1,7 +1,3 @@
-#
-# wm independent hotkeys
-#
-
 # suspend
 super + shift + Escape
     systemctl suspend
@@ -14,17 +10,33 @@ super + Escape
 alt + space
     ~/scripts/switch-language.sh
 
+# kill all ffmpeg
+super + ctrl + shift + f
+    killall ffmpeg
+
+#
+# launches
+#
+
 # start terminal emulator
 super + Return
     alacritty
 
-# kill all ffmpeg
-super + alt + f
-    killall ffmpeg
-
 # start browser
 super + shift + i
     brave
+
+# start incognito browser
+super + ctrl + shift + i
+    brave --incognito
+
+# open emoji picker
+XF86Favorites
+    $HOME/scripts/emoji-picker.sh
+
+# open emoji picker
+Cancel
+    $HOME/scripts/nerdfont-symbol.sh
 
 #
 # media controls
@@ -51,18 +63,14 @@ shift + XF86MonBrightness{Down,Up}
     brightnessctl set {10%-,+10%}
 
 # toggle mute microphone
-ctrl + Print
+ctrl + XF86Reload
     $HOME/scripts/toggle_microphone_mute.sh
 
 # push to talk/mute
-Print
+XF86Reload
     $HOME/scripts/alter_microphone_state.sh
-@Print
+@XF86Reload
     $HOME/scripts/return_microphone_state.sh
-
-# mute/unmute microphone
-XF86Favorites
-    $HOME/scripts/emoji-picker.sh
 
 #
 # media control
@@ -85,7 +93,7 @@ XF86AudioNext
 #
 
 # launch an app
-super + @space
+super + space
     rofi -show drun
 
 # run command
@@ -131,7 +139,6 @@ super + ctrl + b
 # show ui elements while pressing super if dynamic
 {Super_L,Super_R}
     ~/scripts/show-ui-elements.sh
-
 @{Super_L,Super_R}
     ~/scripts/hide-ui-elements.sh
 
@@ -199,7 +206,7 @@ super + {o,i}
     bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{0-9, ctrl + v, XF86AudioPlay, Print}
+super + {_,shift + }{0-9, ctrl + v, XF86AudioPlay, XF86Reload}
     bspc {desktop -f,node -d} '^{1-9, 10, 11, 12, 13}'
 
 # select windows in parent space

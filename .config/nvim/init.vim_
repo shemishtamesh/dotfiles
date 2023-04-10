@@ -1,0 +1,116 @@
+syntax enable
+
+nnoremap <SPACE> <Nop>
+map <Space> <LocalLeader>
+
+" set noerrorbells
+set visualbell
+set belloff=all
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nowrap
+
+" relative line numbers in normal, otherwise absolute line numbers
+set number
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
+
+set ignorecase
+set smartcase
+set noswapfile
+set nobackup
+set undodir=C:\Users\yuval\vimfiles\undodir
+set undofile
+set incsearch
+set hls
+set backspace=indent,eol,start
+set splitbelow splitright
+
+set ruler
+
+set hidden
+
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
+
+" Reference chart of values:
+"   Ps = 0  -> blinking block.
+"   Ps = 1  -> blinking block (default).
+"   Ps = 2  -> steady block.
+"   Ps = 3  -> blinking underline.
+"   Ps = 4  -> steady underline.
+"   Ps = 5  -> blinking bar (xterm).
+"   Ps = 6  -> steady bar (xterm).
+" let &t_SI = "\e[6 q"
+" let &t_EI = "\e[2 q"
+" /\ this doesn't work for some reason
+
+set nocompatible
+
+set path+=**
+set wildmenu
+
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=0  " open in same window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+" let g:netrw_list_hide=netrw_gitignore#Hide()
+" let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+" enable mouse
+set mouse=a
+
+" When using `dd` in the quickfix list, remove the item from the quickfix list.
+function! RemoveQFItem()
+  let curqfidx = line('.') - 1
+  let qfall = getqflist()
+  call remove(qfall, curqfidx)
+  call setqflist(qfall, 'r')
+  execute curqfidx + 1 . "cfirst"
+  :copen
+endfunction
+:command! RemoveQFItem :call RemoveQFItem()
+" Use map <buffer> to only map dd in the quickfix window. Requires +localmap
+autocmd FileType qf map <buffer> dd :RemoveQFItem<cr>
+
+
+filetype plugin indent on
+
+let s:is_win = has('win32') || has('win64')
+if s:is_win
+    " ... other Windows specific settings
+
+    nmap <C-z> <Nop>
+endif
+
+" " Plugins will be downloaded under the specified directory.
+" call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+" 
+" " Declare the list of plugins.
+" Plug 'rust-lang/rust.vim'
+" Plug 'ron-rs/ron.vim'
+" Plug 'dense-analysis/ale'
+" Plug 'vimwiki/vimwiki'
+" 
+" " List ends here. Plugins become visible to Vim after this call.
+" call plug#end()
+" 
+" " configure vimwiki.
+" let g:vimwiki_global_ext = 0
+" let g:vimwiki_list = [
+"     \ {
+" 	    \ 'path': '~/vimwiki',
+" 	    \ 'template_path': '~/vimwiki/templates/',
+" 	    \ 'template_default': 'default',
+" 	    \ 'syntax': 'markdown',
+" 	    \ 'ext': '.md',
+" 	    \ 'path_html': '~/vimwiki/site_html/',
+" 	    \ 'custom_wiki2html': 'vimwiki_markdown',
+" 	    \ 'template_ext': '.tpl'},
+"     \ {'path': '~/Desktop/projects/esc/docs/', 'syntax': 'markdown', 'ext': '.md', 'custom_wiki2html': 'vimwiki_markdown'}
+" \ ]
+

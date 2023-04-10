@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# no-rofi
+#no-rofi
 
 if [[ -f /tmp/microphoneismuted ]]
 then
