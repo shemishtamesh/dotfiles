@@ -50,11 +50,15 @@ require('zen-mode').setup({
     },
     -- callback where you can add custom code when the Zen window opens
     on_open = function(win)
+        vim.opt.cmdheight = 0
         vim.opt.colorcolumn = ""
+        vim.o.timeout = false
     end,
     -- callback where you can add custom code when the Zen window closes
     on_close = function()
+        vim.opt.cmdheight = 1
         vim.opt.colorcolumn = "80"
+        vim.o.timeout = true
     end,
 })
 

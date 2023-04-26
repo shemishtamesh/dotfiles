@@ -16,6 +16,7 @@ vim.o.numberwidth = 1
 vim.o.relativenumber = true
 -- vim.o.signcolumn = "yes"
 -- vim.o.cursorline = false
+-- vim.opt.cmdheight = 0
 
 -- Better editing experience
 vim.o.expandtab = true
@@ -51,8 +52,8 @@ vim.o.backupdir = '/tmp/'
 vim.o.directory = '/tmp/'
 vim.o.undodir = '/tmp/'
 
--- Remember 50 items in commandline history
-vim.o.history = 50
+-- Remember 100 items in commandline history
+vim.o.history = 100
 
 -- Better buffer splitting
 vim.o.splitright = true
@@ -73,8 +74,4 @@ vim.o.splitbelow = true
 -- vim.o.foldminlines = 1
 
 vim.opt.mouse = "a"
-
--- Map <leader> to space and <localleader> to \
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 

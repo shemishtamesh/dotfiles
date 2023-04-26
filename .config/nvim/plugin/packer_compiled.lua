@@ -109,14 +109,6 @@ _G.packer_plugins = {
     path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["dashboard-nvim"] = {
-    config = { "\27LJ\2\nŸ\3\0\0\6\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\5\0005\5\a\0>\5\1\0045\5\b\0>\5\2\0045\5\t\0>\5\3\0045\5\n\0>\5\4\4=\4\v\3=\3\f\2B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\6\ficon_hl\14@variable\tdesc\tQuit\ngroup\nLabel\ticon\b‚ùå\bkey\6q\vaction\6q\1\0\6\ficon_hl\14@variable\tdesc\fVimwiki\ngroup\nLabel\ticon\f‚ÑπÔ∏è \bkey\6w\vaction\17VimwikiIndex\1\0\6\ficon_hl\14@variable\tdesc\nFiles\ngroup\nLabel\ticon\tÓàï \bkey\6f\vaction\25Telescope find_files\1\0\4\bkey\6u\vaction\17PackerUpdate\ngroup\14@property\tdesc\15Ôû≤ Update\16week_header\1\0\0\1\0\1\venable\2\1\0\1\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/opt/dashboard-nvim",
-    url = "https://github.com/glepnir/dashboard-nvim"
-  },
   ["dressing.nvim"] = {
     loaded = true,
     path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/dressing.nvim",
@@ -193,11 +185,6 @@ _G.packer_plugins = {
     path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/nvim-tree/nvim-web-devicons"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -243,10 +230,21 @@ _G.packer_plugins = {
     path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  vimtex = {
+    loaded = true,
+    path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
+  },
   vimwiki = {
     loaded = true,
     path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/vimwiki",
     url = "https://github.com/vimwiki/vimwiki"
+  },
+  ["which-key.nvim"] = {
+    config = { "\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1∏\v=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0" },
+    loaded = true,
+    path = "/home/shemishtamesh/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   },
   ["zen-mode.nvim"] = {
     loaded = true,
@@ -260,13 +258,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
-vim.cmd("augroup END")
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1∏\v=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

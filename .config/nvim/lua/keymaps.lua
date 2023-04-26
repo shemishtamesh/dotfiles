@@ -2,9 +2,13 @@
 -- KEYBINDINGS
 -------------------------------------------------
 
+-- Map <leader> to space and <localleader> to \
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- shortcuts for yanking/copying and putting/pasting to and from the system's clipboard
 vim.keymap.set("v", "<leader>y", "\"+y:let @*=@+<CR>", { silent = true })
-vim.keymap.set("n", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>y", "\"+y")  -- only the + register
 vim.keymap.set({ "n", "v" }, "<leader>Y", "\"+Y:let @*=@+<CR>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>p", "\"+p")
 vim.keymap.set({ "n", "v" }, "<leader>P", "\"+P")

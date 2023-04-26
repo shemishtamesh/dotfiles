@@ -164,15 +164,38 @@ local opts = {
     -- setting it to false may improve startup time
     standalone = true,
     on_attach = function(client, bufnr)
-        require('lsp_on_attach')(client, bufnr)
+        require('lsp_attach')(client, bufnr)
 
         local opts = { buffer = bufnr, remap = false }
         vim.keymap.set("n", "<leader>em", rt.expand_macro.expand_macro, opts)
         vim.keymap.set("n", "<leader>rl", rt.runnables.runnables, opts)
-        vim.keymap.set("n", "<leader>rr", ":RustRun<CR>", opts)
+        vim.keymap.set("n", "<leader>rf", ":RustRun<CR>", opts)
+        vim.keymap.set("n", "<leader>rp", ":!cargo run<CR>", opts)
+        vim.keymap.set("n", "<leader>rt", ":!cargo test<CR>", opts)
 
         -- debugging
-        vim.keymap.set("n", "<leader>dd", ":RustDebug<CR>", opts)
+        vim.keymap.set("n", "<leader>dp", ":RustDebug<CR>", opts)
+
+        -- show which-key
+        local wk = require("which-key")
+        wk.register({
+            e = {
+                name = "expand",
+                m = "macro",
+            },
+            r = {
+                name = "run",
+                p = "project",
+                f = "file",
+                t = "test",
+            },
+            d = {
+                name = "debug",
+                p = "list",
+            },
+        }, {prefix = "<leader>"})
+
+        vim.opt.keywordprg="rusty-man"
     end,
   }, -- rust-analyzer options
 

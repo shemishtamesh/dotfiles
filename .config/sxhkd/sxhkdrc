@@ -11,7 +11,7 @@ alt + space
     ~/scripts/switch-language.sh
 
 # kill all ffmpeg
-super + ctrl + shift + f
+super + ctrl + shift + p
     killall ffmpeg
 
 #
@@ -206,7 +206,7 @@ super + {o,i}
     bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{0-9, ctrl + v, XF86AudioPlay, XF86Reload}
+super + {_,shift + }{0-9, v, XF86AudioPlay, XF86Reload}
     bspc {desktop -f,node -d} '^{1-9, 10, 11, 12, 13}'
 
 # select windows in parent space

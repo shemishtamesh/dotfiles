@@ -2,14 +2,20 @@
 
 wait_time=$(rofi -dmenu -p 'wait time')
 if [ -z "$wait_time" ] ; then
-    exit 2
+    bspc rule -a Alacritty state=floating --one-shot
+    alacritty --command termdown "$wait_time"
+    exit 0
 fi
 
 message="$(rofi -dmenu -p 'message')"
 
 if [ -z "$message" ]; then
-    sleep "$wait_time" && notify-send "timer (wait time: $wait_time) finished"
+    bspc rule -a Alacritty state=floating --one-shot
+    alacritty --command termdown "$wait_time"\
+        && notify-send "timer" "timer (wait time: $wait_time) finished"
     exit 0
 fi
-sleep "$wait_time" && notify-send -a "rofi-timer" "$message"
+bspc rule -a Alacritty state=floating --one-shot
+alacritty --command termdown --title "$message" "$wait_time"\
+    && notify-send -a "timer" "$message"
 

@@ -16,50 +16,6 @@ packer.startup(function(use)
     -- Packer can manage itself
     use("wbthomason/packer.nvim")
 
-    -- Dashboard is a nice start screen for nvim
-    use {
-      'glepnir/dashboard-nvim',
-      event = 'VimEnter',
-      config = function()
-        require('dashboard').setup {
-            theme = 'hyper',
-            config = {
-                week_header = {
-                    enable = true,
-                },
-                shortcut = {
-                    { desc = ' Update', group = '@property', action = 'PackerUpdate', key = 'u' },
-                    {
-                        icon = ' ',
-                        icon_hl = '@variable',
-                        desc = 'Files',
-                        group = 'Label',
-                        action = 'Telescope find_files',
-                        key = 'f',
-                    },
-                    {
-                        icon = 'ℹ️ ',
-                        icon_hl = '@variable',
-                        desc = 'Vimwiki',
-                        group = 'Label',
-                        action = 'VimwikiIndex',
-                        key = 'w',
-                    },
-                    {
-                        icon = '❌',
-                        icon_hl = '@variable',
-                        desc = 'Quit',
-                        group = 'Label',
-                        action = 'q',
-                        key = 'q',
-                    },
-                },
-            },
-        }
-      end,
-      requires = {'nvim-tree/nvim-web-devicons'}
-    }
-
     use { "bluz71/vim-moonfly-colors", as = "moonfly" }
 
     -- Telescope
@@ -133,14 +89,16 @@ packer.startup(function(use)
 
     --use {'krady21/compiler-explorer.nvim'}
 
---    use {
---      "folke/which-key.nvim",
---      config = function()
---        vim.o.timeout = true
---        vim.o.timeoutlen = 300
---      end
---    }
---
+   use {
+     "folke/which-key.nvim",
+     config = function()
+       vim.o.timeout = true
+       vim.o.timeoutlen = 3000
+     end
+   }
+
+   use 'lervag/vimtex'
+
 --    -- File management --
 --    use("vifm/vifm.vim")
 --    use("scrooloose/nerdtree")
@@ -167,6 +125,50 @@ packer.startup(function(use)
 --
 --    -- Other stuff --
 --    use("frazrepo/vim-rainbow")
+
+    -- -- Dashboard is a nice start screen for nvim
+    -- use {
+    --   'glepnir/dashboard-nvim',
+    --   event = 'VimEnter',
+    --   config = function()
+    --     require('dashboard').setup {
+    --         theme = 'hyper',
+    --         config = {
+    --             week_header = {
+    --                 enable = true,
+    --             },
+    --             shortcut = {
+    --                 { desc = ' Update', group = '@property', action = 'PackerUpdate', key = 'u' },
+    --                 {
+    --                     icon = ' ',
+    --                     icon_hl = '@variable',
+    --                     desc = 'Files',
+    --                     group = 'Label',
+    --                     action = 'Telescope find_files',
+    --                     key = 'f',
+    --                 },
+    --                 {
+    --                     icon = 'ℹ️ ',
+    --                     icon_hl = '@variable',
+    --                     desc = 'Vimwiki',
+    --                     group = 'Label',
+    --                     action = 'VimwikiIndex',
+    --                     key = 'w',
+    --                 },
+    --                 {
+    --                     icon = '❌',
+    --                     icon_hl = '@variable',
+    --                     desc = 'Quit',
+    --                     group = 'Label',
+    --                     action = 'q',
+    --                     key = 'q',
+    --                 },
+    --             },
+    --         },
+    --     }
+    --   end,
+    --   requires = {'nvim-tree/nvim-web-devicons'}
+    -- }
 
     if packer_bootstrap then
         packer.sync()
