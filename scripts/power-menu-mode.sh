@@ -32,7 +32,7 @@ declare -A icons
 icons[lockscreen]="\uf023"
 icons[switchuser]="\uf518"
 icons[logout]="\uf842"
-icons[suspend]="\uf9b1"
+icons[suspend]="󰒲"
 icons[hibernate]="\uf7c9"
 icons[reboot]="\ufc07"
 icons[shutdown]="\uf011"

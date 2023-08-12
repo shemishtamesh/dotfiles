@@ -25,26 +25,32 @@ bspc config ignore_ewmh_focus true
 bspc rule -a copyq desktop=10 follow=off focus=off
 bspc rule -a Spotify desktop=11 follow=off focus=off
 bspc rule -a discord desktop=12 follow=off focus=off
+bspc rule -a discord desktop=12 follow=off focus=off
+bspc rule -a Onboard state=floating
 
 # autoruns
 nitrogen --restore &
 picom -b --fade-exclude 'class_g = "xsecurelock"' &
-~/scripts/notification-log.sh ~/logs/notifications.log &
 $HOME/.config/polybar/launch.sh &
+~/scripts/notification-log.sh ~/logs/notifications.log &
 xset -r 181  # stop the Cancel key from repeating, it is used for push to talk/mute
 xset -r 133  # stop the super key from repeating, it is used for dynamic ui hiding
 setxkbmap us &
 xsetroot -cursor_name left_ptr &
-xss-lock xsecurelock &
+xss-lock lock &
 pacwall &
 copyq &
-~/scripts/enable-mouse-middle-scroll.sh &
-/usr/lib/kdeconnectd &
+xmodmap -e "pointer = 1, 2, 3, 4, 5, 6, 7, 11, 12, 10, 8, 9"
+
+killall /usr/lib/kdeconnectd &
+kdeconnect-cli --refresh
+
 xbanish &
 task sync &
 discord &
 transmission-daemon &
 lxsession &
+~/scripts/enable-mouse-middle-scroll.sh &
 ~/scripts/force-hide-ui-elements.sh
 ~/scripts/force-show-ui-elements.sh
 

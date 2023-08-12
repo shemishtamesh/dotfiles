@@ -27,7 +27,7 @@ control_chars = ['', '', '', '']
 display_player_prefix = {
     "spotify":  '',
     "firefox":  '',
-    "brave":    'B',
+    "brave":    '',
     "default":  ''
 }
 
@@ -39,7 +39,7 @@ metadata_fields = ["xesam:title", "xesam:artist"]
 metadata_separator = "-"
 
 # (bool) : Hide text when no player is available? True disables the output for no players.
-hide_output = False
+hide_output = True
 
 # Defult initialization
 current_player = None

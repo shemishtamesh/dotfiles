@@ -7,7 +7,7 @@ lsp.ensure_installed({
     'lua_ls',
     'pylsp',
     'ltex',
-    --'cpptools'  -- TODO: find a way to get a c lsp
+    'clangd'
 })
 
 local cmp = require('cmp')

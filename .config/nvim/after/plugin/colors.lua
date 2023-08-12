@@ -1,4 +1,4 @@
-function ColorMyPencils(color)
+local function apply_colorscheme(color)
     color = color or "moonfly"
     vim.cmd.colorscheme(color)
 
@@ -6,5 +6,5 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-ColorMyPencils()
+apply_colorscheme()
 

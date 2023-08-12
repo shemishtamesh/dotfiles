@@ -1,5 +1,5 @@
 vim.keymap.set('n', 'Q', ':q!<CR>')
 
-vim.cmd(':%s/.//g')
+pcall(function() vim.cmd(':%s///g') end)
 vim.cmd(':0')
 

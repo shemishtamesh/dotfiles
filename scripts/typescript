@@ -1,0 +1,14 @@
+Script started on 2023-05-02 22:28:35+03:00 [TERM="alacritty" TTY="/dev/pts/1" COLUMNS="73" LINES="36"]
+[5 q[1m[7m%[27m[1m[0m                                                                         [0m[27m[24m[J
+[1;36m~/scripts[0m [1;32m🐍 [0m[1;32mv3.10.10[0m 
+22:28:35 [1;32m❯[0m [K[5 q[5 q[A[A[?2004h[0m[27m[24m[J
+[1;36m~/scripts[0m [1;32m🐍 [0m[1;32mv3.10.10[0m 
+22:28:35 [1;32m❯[0m [K[?2004l
+[1m[7m%[27m[1m[0m                                                                         [0m[27m[24m[J
+[1;36m~/scripts[0m [1;32m🐍 [0m[1;32mv3.10.10[0m 
+22:28:39 [1;31m❯[0m [K[5 q[5 q[A[A[?2004h[0m[27m[24m[J
+[1;36m~/scripts[0m [1;32m🐍 [0m[1;32mv3.10.10[0m 
+22:28:39 [1;31m❯[0m [K[4me[24m[24m[32me[32mx[39m[1m[31me[1m[31mx[1m[31mi[0m[39m[0m[32me[0m[32mx[0m[32mi[32mt[39m[?2004l
+[5 qzsh: locking failed for /home/shemishtamesh/.cache/zsh/history: no such file or directory
+
+Script done on 2023-05-02 22:28:40+03:00 [COMMAND_EXIT_CODE="130"]
