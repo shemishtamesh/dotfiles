@@ -28,15 +28,15 @@ super + Return
 
 # start browser
 super + shift + i
-    brave
-
-# start browser
-super + control + n
-    anytype
+    firefox
 
 # start incognito browser
 super + ctrl + shift + i
-    brave --incognito
+    firefox --private-window
+
+# start note manager
+super + control + n
+    anytype
 
 # open emoji picker
 XF86Favorites

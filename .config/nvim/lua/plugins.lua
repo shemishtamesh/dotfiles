@@ -115,6 +115,12 @@ packer.startup(function(use)
 
     use 'Exafunction/codeium.vim'
 
+    use({
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      after = "nvim-treesitter",
+      requires = "nvim-treesitter/nvim-treesitter",
+    })
+
     --    -- File management --
     --    use("vifm/vifm.vim")
     --    use("scrooloose/nerdtree")

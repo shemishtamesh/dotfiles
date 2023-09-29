@@ -124,8 +124,11 @@ def update_prefix_suffix(player_name="", status=""):
 
 def update_players():
     global player_names, players, session_bus, current_player, last_player_name
-    player_names = [service for service in session_bus.list_names(
-    ) if service.startswith('org.mpris.MediaPlayer2.')]
+    try:
+        player_names = [service for service in session_bus.list_names(
+        ) if service.startswith('org.mpris.MediaPlayer2.')]
+    except Exception as e:
+        return
     players = [session_bus.get_object(
         service, '/org/mpris/MediaPlayer2') for service in player_names]
     if last_player_name != get_name(current_player):
