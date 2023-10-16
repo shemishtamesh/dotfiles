@@ -19,8 +19,12 @@ super + ctrl + shift + p
     killall ffmpeg
 
 #
-# launches
+# utility quick launch
 #
+
+# screen capture
+super + shift + p
+    ~/scripts/take-screenshots.sh
 
 # start terminal emulator
 super + Return
@@ -35,8 +39,12 @@ super + ctrl + shift + i
     firefox --private-window
 
 # start note manager
-super + control + n
-    anytype
+super + d
+    ~/scripts/diary.sh
+
+# sketchpad
+super + shift + d
+    ~/scripts/whiteboard.sh
 
 # open emoji picker
 XF86Favorites
@@ -272,20 +280,4 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + ctrl + alt + {h,j,k,l}
     bspc node -v {-20 0,0 20,0 -20,20 0}
-
-#
-# utility quick launch
-#
-
-# screen capture
-super + shift + p
-    ~/scripts/take-screenshots.sh
-
-# diary
-super + d
-    ~/scripts/diary.sh
-
-# sketchpad
-super + shift + d
-    ~/scripts/whiteboard.sh
 

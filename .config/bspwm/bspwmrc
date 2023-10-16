@@ -46,6 +46,7 @@ killall /usr/lib/kdeconnectd &
 kdeconnect-cli --refresh
 
 xbanish &
+easyeffects --gapplication-service &
 task sync &
 discord &
 transmission-daemon &
