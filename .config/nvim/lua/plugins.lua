@@ -21,7 +21,7 @@ packer.startup(function(use)
     -- Telescope
     use({
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.1",
+        tag = "0.1.4",
         requires = {
             { "nvim-lua/plenary.nvim" },
         },
@@ -119,6 +119,39 @@ packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter-textobjects",
       after = "nvim-treesitter",
       requires = "nvim-treesitter/nvim-treesitter",
+    })
+
+    use 'David-Kunz/gen.nvim'
+
+    -- use({
+    --   "m4xshen/hardtime.nvim",
+    --   requires = "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim",
+    -- })
+
+    use({
+        'mikesmithgh/kitty-scrollback.nvim',
+        disable = false,
+        opt = true,
+        cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
+        event = { 'User KittyScrollbackLaunch' },
+        -- tag = '*', -- latest stable version, may have breaking changes if major version changed
+        -- tag = 'v3.0.0', -- pin specific tag
+        config = function()
+            -- vim.g.mapleader = ' '
+            -- vim.g.maplocalleader = ','
+            require('kitty-scrollback').setup({
+                custom = function()
+                    vim.print('customstuff')
+                    return {
+                        status_window = {
+                            style_simple = true,
+                            autoclose = true,
+                            show_timer = true,
+                        },
+                    }
+                end
+            })
+        end,
     })
 
     --    -- File management --
