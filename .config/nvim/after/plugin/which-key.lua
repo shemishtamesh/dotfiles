@@ -50,7 +50,7 @@ wk.setup({
         winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
     },
     layout = {
-        height = { min = 1, max = 25 }, -- min and max height of the columns
+        height = { min = 1, max = 10 }, -- min and max height of the columns
         width = { min = 20, max = 50 }, -- min and max width of the columns
         spacing = 3, -- spacing between columns
         align = "center", -- align columns left, center or right
@@ -62,18 +62,18 @@ wk.setup({
     triggers = "auto", -- automatically setup triggers
     -- triggers = {"<leader>"} -- or specifiy a list manually
     -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
-    -- triggers_nowait = {
-    --     -- marks
-    --     "`",
-    --     "'",
-    --     "g`",
-    --     "g'",
-    --     -- registers
-    --     '"',
-    --     "<c-r>",
-    --     -- spelling
-    --     "z=",
-    -- },
+    triggers_nowait = {
+        -- -- marks
+        -- "`",
+        -- "'",
+        -- "g`",
+        -- "g'",
+        -- -- registers
+        -- '"',
+        -- "<c-r>",
+        -- -- spelling
+        -- "z=",
+    },
     triggers_blacklist = {
         -- list of mode / prefixes that should never be hooked by WhichKey
         -- this is mostly relevant for keymaps that start with a native binding

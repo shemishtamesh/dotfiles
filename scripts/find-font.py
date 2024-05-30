@@ -30,7 +30,7 @@ for root, dirs, files in os.walk("/usr/share/fonts/"):
 #     return cmap_table_containes
 
 
-def and_chars_in_font(unicode_chars, font):
+def all_chars_in_font(unicode_chars, font):
     if len(unicode_chars) == 0:
         return False
 
@@ -71,7 +71,7 @@ def test(string):
         font = TTFont(fontpath)   # specify the path to the font in question
         if len(string) == 0:
             continue
-        elif and_chars_in_font(string, font):
+        elif all_chars_in_font(string, font):
             fonts_with_chars += fontpath + '\n'
 
     rofi_command =\

@@ -1,49 +1,86 @@
-local status, packer = pcall(require, "packer")
-if not status then
-    print("Packer is not installed")
-    return
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Reloads Neovim after whenever you save plugins.lua
-vim.cmd([[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerSync
-augroup END
-]])
+-- local status, packer = pcall(require, "packer")
+-- if not status then
+--     print("Packer is not installed")
+--     return
+-- end
 
-packer.startup(function(use)
-    -- Packer can manage itself
-    use("wbthomason/packer.nvim")
+-- -- Reloads Neovim after whenever you save plugins.lua
+-- vim.cmd([[
+-- augroup packer_user_config
+-- autocmd!
+-- autocmd BufWritePost plugins.lua source <afile> | PackerSync
+-- augroup END
+-- ]])
 
-    use { "bluz71/vim-moonfly-colors", as = "moonfly" }
+require('lazy').setup({
+    'nvim-telescope/telescope-file-browser.nvim',
+    'mbbill/undotree',  -- for viewing and navigating the undo tree
+    'sitiom/nvim-numbertoggle',  -- relative numbers in current buffer normal mode, otherwise absolute numbers
+    'simrat39/rust-tools.nvim',  -- for working with rust
+    'vimwiki/vimwiki',
+    'tbabej/taskwiki',
+    'folke/trouble.nvim', -- inlay errors
+    'nvim-tree/nvim-web-devicons', -- inlay errors
+    'nvim-lualine/lualine.nvim', -- A better statusline
+    'stevearc/dressing.nvim',
+    'folke/zen-mode.nvim',
+    'numToStr/Comment.nvim',
+    'lervag/vimtex',
+    'lukas-reineke/indent-blankline.nvim',
+    'tpope/vim-surround',
+    'norcalli/nvim-colorizer.lua',
+    'Exafunction/codeium.vim',
+    'David-Kunz/gen.nvim',
+    'habamax/vim-asciidoctor',
+    'DanilaMihailov/beacon.nvim',
+    'christoomey/vim-tmux-navigator',
 
-    -- Telescope
-    use({
-        "nvim-telescope/telescope.nvim",
-        tag = "0.1.4",
-        requires = {
-            { "nvim-lua/plenary.nvim" },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    },
+
+    {
+        'bluz71/vim-moonfly-colors',
+        name = 'moonfly'
+    },
+
+    {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.4',
+        dependencies = {
+            { 'nvim-lua/plenary.nvim' },
         },
-    })
-    use("nvim-telescope/telescope-file-browser.nvim")
+    },  -- Telescope
 
-    use("nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})  -- Treesitter Syntax Highlighting
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        dependencies = 'nvim-treesitter/nvim-treesitter-textobjects',
+    },  -- Treesitter Syntax Highlighting and more text objects
 
-    use("mbbill/undotree")  -- for viewing and navigating the undo tree
-
-    use('tpope/vim-fugitive')  -- git integration
-
-    use { "sitiom/nvim-numbertoggle" }  -- relative numbers in current buffer normal mode, otherwise absolute numbers
-
-    use 'simrat39/rust-tools.nvim'  -- for working with rust
-
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-
-    use {
+    -- { 'rcarriga/nvim-dap-ui', dependencies = {'mfussenegger/nvim-dap'} },
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
-        requires = {
+        dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
             {'williamboman/mason.nvim'},           -- Optional
@@ -54,6 +91,7 @@ packer.startup(function(use)
             {'hrsh7th/cmp-nvim-lsp'},     -- Required
             {'hrsh7th/cmp-buffer'},       -- Optional
             {'hrsh7th/cmp-path'},         -- Optional
+            {'hrsh7th/cmp-cmdline'},         -- Optional
             {'saadparwaiz1/cmp_luasnip'}, -- Optional
             {'hrsh7th/cmp-nvim-lua'},     -- Optional
 
@@ -64,168 +102,52 @@ packer.startup(function(use)
             -- inlay hints
             {'simrat39/inlay-hints.nvim'}
         }
-    }
+    },
 
-    use {
+    {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup()
         end
-    }
+    },
 
-    use {"vimwiki/vimwiki"}
-    use {"tbabej/taskwiki"}
-
-    use("folke/trouble.nvim") -- inlay errors
-    use("nvim-lualine/lualine.nvim") -- A better statusline
-
-    use {'stevearc/dressing.nvim'}
-
-    use {'folke/zen-mode.nvim'}
-
-    use {'numToStr/Comment.nvim'}
-
-    --use('Aasim-A/scrollEOF.nvim')
-
-    --use {'krady21/compiler-explorer.nvim'}
-
-    use {
-        "folke/which-key.nvim",
+    {
+        'folke/which-key.nvim',
         config = function()
             vim.o.timeout = true
-            vim.o.timeoutlen = 3000
+            vim.o.timeoutlen = 4000
         end
-    }
+    },
 
-    use 'lervag/vimtex'
-
-    use "lukas-reineke/indent-blankline.nvim"
-
-    use("tpope/vim-surround")
-
-    use 'norcalli/nvim-colorizer.lua'
-
-    use {
-        "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
+    {
+        'folke/todo-comments.nvim',
+        dependencies = 'nvim-lua/plenary.nvim',
         config = function()
-            require("todo-comments").setup {}
+            require('todo-comments').setup {}
         end
-    }
+    },
 
-    use 'Exafunction/codeium.vim'
-
-    use({
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      after = "nvim-treesitter",
-      requires = "nvim-treesitter/nvim-treesitter",
-    })
-
-    use 'David-Kunz/gen.nvim'
-
-    -- use({
-    --   "m4xshen/hardtime.nvim",
-    --   requires = "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim",
-    -- })
-
-    use({
-        'mikesmithgh/kitty-scrollback.nvim',
-        disable = false,
-        opt = true,
-        cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
-        event = { 'User KittyScrollbackLaunch' },
-        -- tag = '*', -- latest stable version, may have breaking changes if major version changed
-        -- tag = 'v3.0.0', -- pin specific tag
-        config = function()
-            -- vim.g.mapleader = ' '
-            -- vim.g.maplocalleader = ','
-            require('kitty-scrollback').setup({
-                custom = function()
-                    vim.print('customstuff')
-                    return {
-                        status_window = {
-                            style_simple = true,
-                            autoclose = true,
-                            show_timer = true,
-                        },
-                    }
-                end
-            })
-        end,
-    })
-
-    --    -- File management --
-    --    use("vifm/vifm.vim")
-    --    use("scrooloose/nerdtree")
-    --    use("tiagofumo/vim-nerdtree-syntax-highlight")
-    --    use("ryanoasis/vim-devicons")
-    --
-    --    -- Tim Pope Plugins --
-    --
-    --    -- Syntax Highlighting and Colors --
-    --    use("PotatoesMaster/i3-vim-syntax")
-    --    use("kovetskiy/sxhkd-vim")
-    --    use("vim-python/python-syntax")
-    --    use("nickeb96/fish.vim")
-    --
-    --    -- Junegunn Choi Plugins --
-    --    use("junegunn/goyo.vim")
-    --    use("junegunn/limelight.vim")
-    --    use("junegunn/vim-emoji")
-    --
-    --    -- Colorschemes --
-    --    use("RRethy/nvim-base16")
-    --    use("kyazdani42/nvim-palenight.lua")
-    --
-    --    -- Other stuff --
-    --    use("frazrepo/vim-rainbow")
-
-    -- -- Dashboard is a nice start screen for nvim
-    -- use {
-        --   'glepnir/dashboard-nvim',
-        --   event = 'VimEnter',
-        --   config = function()
-            --     require('dashboard').setup {
-                --         theme = 'hyper',
-                --         config = {
-                    --             week_header = {
-                        --                 enable = true,
-                        --             },
-                        --             shortcut = {
-                            --                 { desc = ' Update', group = '@property', action = 'PackerUpdate', key = 'u' },
-                            --                 {
-                                --                     icon = ' ',
-                                --                     icon_hl = '@variable',
-                                --                     desc = 'Files',
-                                --                     group = 'Label',
-                                --                     action = 'Telescope find_files',
-                                --                     key = 'f',
-                                --                 },
-                                --                 {
-                                    --                     icon = 'ℹ️ ',
-                                    --                     icon_hl = '@variable',
-                                    --                     desc = 'Vimwiki',
-                                    --                     group = 'Label',
-                                    --                     action = 'VimwikiIndex',
-                                    --                     key = 'w',
-                                    --                 },
-                                    --                 {
-                                        --                     icon = '❌',
-                                        --                     icon_hl = '@variable',
-                                        --                     desc = 'Quit',
-                                        --                     group = 'Label',
-                                        --                     action = 'q',
-                                        --                     key = 'q',
-                                        --                 },
-                                        --             },
-                                        --         },
-                                        --     }
-                                        --   end,
-                                        --   requires = {'nvim-tree/nvim-web-devicons'}
-                                        -- }
-
-                                        if packer_bootstrap then
-                                            packer.sync()
-                                        end
-                                    end)
+    {
+      'mikesmithgh/kitty-scrollback.nvim',
+      enabled = true,
+      lazy = true,
+      cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
+      event = { 'User KittyScrollbackLaunch' },
+      config = function()
+          require('kitty-scrollback').setup({
+              global = function()
+                  return {
+                      status_window = {
+                          show_timer = true,
+                          icons = {
+                              kitty = '',
+                              heart = '',
+                          }
+                      },
+                  }
+              end
+          })
+      end,
+    },
+})
 

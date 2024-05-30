@@ -24,7 +24,7 @@ video_to_gif() {
 }
 
 crtc() {
-  notify-send --app-name="screenshot" "Screenshot" "Select a region to capture"
+  # notify-send --app-name="screenshot" "Screenshot" "Select a region to capture"
   ffcast -q "$(slop -n -f '-g %g ')" png /tmp/screenshot_clip.png
   xclip -selection clipboard -t image/png /tmp/screenshot_clip.png
   rm /tmp/screenshot_clip.png
@@ -32,7 +32,7 @@ crtc() {
 }
 
 crtf() {
-  notify-send --app-name="screenshot" "Screenshot" "Select a region to capture"
+  # notify-send --app-name="screenshot" "Screenshot" "Select a region to capture"
   dt=$1
   ffcast -q "$(slop -n -f '-g %g ')" png "$screenshot_directory/$dt.png"
   notify-send --app-name="screenshot" "Screenshot" "Region saved to ${screenshot_directory//${HOME}/~}"
@@ -52,7 +52,7 @@ cstf() {
 }
 
 rgrtf() {
-  notify-send --app-name="screenshot" "Screenshot" "Select a region to record"
+  # notify-send --app-name="screenshot" "Screenshot" "Select a region to record"
   dt=$1
   ffcast -q "$(slop -n -f '-g %g ')" rec /tmp/screenshot_gif.mp4
   notify-send --app-name="screenshot" "Screenshot" "Converting to gif… (can take a while)"
@@ -71,7 +71,7 @@ rgstf() {
 }
 
 rvrtf() {
-  notify-send --app-name="screenshot" "Screenshot" "Select a region to record"
+  # notify-send --app-name="screenshot" "Screenshot" "Select a region to record"
   dt=$1
   ffcast -q "$(slop -n -f '-g %g ')" rec "$screenshot_directory/$dt.mp4"
   notify-send --app-name="screenshot" "Screenshot" "Saved to ${screenshot_directory//${HOME}/~}"

@@ -2,7 +2,7 @@ configuration {
     display-drun: "applications:";
     display-window: "windows:";
     drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-    font: "SauceCodePro Nerd Font Medium 12";
+    font: "SauceCodePro NF 12";
     modi: "window,run,drun,emoji,calc";
     show-icons: true;
 }
@@ -73,6 +73,8 @@ listview {
     background-color: @background;
     columns: 1;
     lines: 10;
+    dynamic: true;
+    fixed-height: false;
 }
 
 prompt {

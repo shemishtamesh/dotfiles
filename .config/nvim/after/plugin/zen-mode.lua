@@ -38,7 +38,7 @@ require('zen-mode').setup({
         -- - listen_on unix:/tmp/kitty
         kitty = {
             enabled = true,
-            font = "+4", -- font size increment
+            font = "+12", -- font size increment
         },
         -- this will change the font size on alacritty when in zen mode
         -- requires  Alacritty Version 0.10.0 or higher

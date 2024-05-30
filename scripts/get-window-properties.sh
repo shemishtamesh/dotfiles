@@ -2,6 +2,6 @@
 
 window_properties=$(xprop)
 
-bspc rule -a Alacritty state=floating --one-shot
-alacritty --command bash -c "echo '$window_properties' | nvim -R"
+bspc rule -a kitty state=floating --one-shot
+kitty --execute bash -c "echo '$window_properties' | nvim -R"
 

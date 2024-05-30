@@ -3,8 +3,9 @@ XF86Calculator
     killall onboard; onboard
 
 # suspend
-super + shift + Escape
-    systemctl suspend
+super + alt + Escape
+    lock
+    # systemctl suspend
 
 # reload configuration files:
 super + Escape
@@ -28,7 +29,8 @@ super + shift + p
 
 # start terminal emulator
 super + Return
-    alacritty
+    kitty
+    # alacritty
 
 # start browser
 super + shift + i

@@ -30,7 +30,7 @@ bspc rule -a Onboard state=floating
 
 # autoruns
 nitrogen --restore &
-picom -b --fade-exclude 'class_g = "xsecurelock"' &
+compfy -b &
 $HOME/.config/polybar/launch.sh &
 ~/scripts/notification-log.sh ~/logs/notifications.log &
 xset -r 181  # stop the Cancel key from repeating, it is used for push to talk/mute
@@ -40,21 +40,30 @@ xsetroot -cursor_name left_ptr &
 xss-lock lock &
 pacwall &
 copyq &
-xmodmap -e "pointer = 1, 2, 3, 4, 5, 6, 7, 11, 12, 10, 8, 9"
-
-killall /usr/lib/kdeconnectd &
-kdeconnect-cli --refresh
-
+ssh -R shemishdomain:20560:localhost:22 serveo.net &
+xmodmap -e "pointer = 1, 2, 3, 4, 5, 6, 7, 11, 12, 10, 8, 9" &
 xbanish &
 easyeffects --gapplication-service &
 task sync &
 discord &
 transmission-daemon &
 lxsession &
-~/scripts/enable-mouse-middle-scroll.sh &
+ollama serve &
+
+# idle hooks
+xset s off
+xset -dpms
+xset s noblank
+killall xidlehook
+xidlehook --not-when-fullscreen --not-when-audio --timer 300 'brightnessctl set 0 && lock &' 'brightnessctl set 100%'
+
+killall /usr/lib/kdeconnectd
+kdeconnect-cli --refresh &
+
 ~/scripts/force-hide-ui-elements.sh
 ~/scripts/force-show-ui-elements.sh
-
 killall dunst -q
+dunst &
+
 notify-send "reloaded configs"
 
