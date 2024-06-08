@@ -1,0 +1,15 @@
+[user]
+	name = shemishtamesh
+	email = shemishtamail@gmail.com
+[diff]
+	tool = nvimdiff
+[difftool]
+	prompt = false
+[alias]
+	plog = log --all --decorate --oneline --graph
+[merge]
+	tool = nvimdiff
+[mergetool]
+	keepBackup = false
+[init]
+	defaultBranch = main
