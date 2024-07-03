@@ -56,5 +56,6 @@ vim.o.history = 100
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+-- enable mouse support
 vim.opt.mouse = "a"
 

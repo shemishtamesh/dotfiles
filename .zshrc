@@ -74,6 +74,9 @@ bindkey '^e' edit-command-line
 # dotfiles alias
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# connect to work pc
+alias work="ssh -i $HOME/.ssh/work_key shemishtamesh@192.168.1.3 -t '/opt/homebrew/bin/tmux -u new-session -As default'"
+
 # copy (y) and paste (p)
 alias y='xsel --clipboard --input'
 alias p='xsel --clipboard --output'
@@ -92,6 +95,19 @@ export MANPAGER="nvim +Man!"
 export EDITOR="nvim"
 
 # functions:
+function bak() {
+    local filename="$1"
+    if [[ "$filename" =~ .bak$ ]]; then
+        mv "$filename" "${filename%.bak}";
+        return 0;
+    else
+        mv "$filename" "$filename.bak";
+        return 0;
+    fi
+    echo "Error: $filename is not a valid file or directory.";
+    return 1;
+}
+
 transfer() {
     if [ $# -eq 0 ];then
         echo "No arguments specified.\nUsage:\n  transfer <file|directory>\n  ... | transfer <file_name>">&2;
@@ -189,10 +205,10 @@ if [ -f '/home/shemishtamesh/Application/google-cloud-sdk/path.zsh.inc' ]; then 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/shemishtamesh/Application/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/shemishtamesh/Application/google-cloud-sdk/completion.zsh.inc'; fi
 
-# enable pyenv (pyenv init)
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# # enable pyenv (pyenv init)
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 # confirm before overwriting something
 alias cp="cp -i"
@@ -230,7 +246,9 @@ alias n="nvim"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-# load plugins
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+# plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+ZSH_HIGHLIGHT_STYLES[comment]='fg=gray,bold'
 

@@ -31,7 +31,7 @@ require('lazy').setup({
     'sitiom/nvim-numbertoggle',  -- relative numbers in current buffer normal mode, otherwise absolute numbers
     'simrat39/rust-tools.nvim',  -- for working with rust
     'vimwiki/vimwiki',
-    'tbabej/taskwiki',
+    -- 'tbabej/taskwiki',
     'folke/trouble.nvim', -- inlay errors
     'nvim-tree/nvim-web-devicons', -- inlay errors
     'nvim-lualine/lualine.nvim', -- A better statusline
@@ -47,6 +47,9 @@ require('lazy').setup({
     'habamax/vim-asciidoctor',
     'DanilaMihailov/beacon.nvim',
     'christoomey/vim-tmux-navigator',
+    'tpope/vim-dadbod',
+    'kristijanhusak/vim-dadbod-ui',
+    'kristijanhusak/vim-dadbod-completion',
 
     {
         "folke/noice.nvim",
