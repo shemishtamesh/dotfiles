@@ -241,14 +241,12 @@ alias sudo='sudo '
 alias ttt="tt -showwpm -noskip -notheme -json "$HOME/.tt/never_to_have_been.txt" >> $HOME/logs/tt.json"
 alias n="nvim"
 
-# Load theme
-#source ~/.config/zsh_themes/agnoster.zsh-theme
+# plugins
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
-# plugins
+source <(fzf --zsh)
+source <(atuin init zsh)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 ZSH_HIGHLIGHT_STYLES[comment]='fg=gray,bold'
 
