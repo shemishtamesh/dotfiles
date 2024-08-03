@@ -3,13 +3,21 @@
 	email = shemishtamail@gmail.com
 [diff]
 	tool = nvimdiff
+    colorMoved = default
 [difftool]
 	prompt = false
 [alias]
 	plog = log --all --decorate --oneline --graph
 [merge]
 	tool = nvimdiff
+    conflictstyle = diff3
 [mergetool]
 	keepBackup = false
 [init]
 	defaultBranch = main
+[core]
+    editor = nvim
+    pager = delta
+[delta]
+    navigate = true
+    side-by-side = true

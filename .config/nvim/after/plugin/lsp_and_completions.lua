@@ -3,15 +3,15 @@ local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
 
-lsp.ensure_installed({
-    'rust_analyzer',
-    'lua_ls',
-    'pylsp',
-    'ltex',
-    'clangd',
-})
+-- lsp.ensure_installed({
+--     'rust_analyzer',
+--     'lua_ls',
+--     'pylsp',
+--     'ltex',
+--     'clangd',
+-- })
 
--- remove sign icons (to leave space for gitsigns
+-- remove sign icons (to leave space for gitsigns)
 lsp.set_preferences({
     sign_icons = {
         error = '',
@@ -58,9 +58,9 @@ require 'lspconfig'.pylsp.setup {
     }
 }
 
-require 'lspconfig'.jsonls.setup {
-    on_attach = require('lsp_attach'),
-}
+-- require 'lspconfig'.jsonls.setup {
+--     on_attach = require('lsp_attach'),
+-- }
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -76,15 +76,26 @@ local cmp = require('cmp')
 
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-p>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_prev_item(cmp_select),
+    -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
 })
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-cmp_mappings['<CR>'] = nil
+-- this doesn't work for some reason
+cmp_mappings['<Tab>'] = cmp.config.disable
+cmp_mappings['<S-Tab>'] = cmp.config.disable
+cmp_mappings['<CR>'] = cmp.config.disable
+-- -- therefore this
+-- vim.keymap.set("n", "<Tab>", "<nop>")
+-- vim.keymap.set("n", "<S-Tab>", "<nop>")
+-- vim.keymap.set("n", "<CR>", "<nop>")
+
+lsp.setup_nvim_cmp({
+    mapping = cmp_mappings
+})
 
 cmp.setup.cmdline('?', {
     mapping = cmp.mapping.preset.cmdline(),
@@ -119,9 +130,5 @@ cmp.setup.filetype({ "sql" }, {
         { name = "vim-dadbod-completion" },
         { name = "buffer" },
     },
-})
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
 })
 

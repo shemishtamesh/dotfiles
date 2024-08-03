@@ -1,3 +1,6 @@
+require('trouble').setup {}
+vim.keymap.set("n", "<leader>t", vim.cmd.Trouble);
+
 -- require('trouble').setup {
 --     position = "bottom", -- position of the list can be: bottom, top, left, right
 --     height = 10, -- height of the trouble list when position is top or bottom
@@ -45,5 +48,4 @@
 --     },
 --     use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 -- }
-vim.keymap.set("n", "<leader>t", vim.cmd.TroubleToggle);
 

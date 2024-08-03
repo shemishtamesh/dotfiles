@@ -9,19 +9,18 @@ vim.keymap.set("n", "<leader>fq", builtin.quickfix)
 vim.keymap.set("n", "<leader>fj", builtin.jumplist)
 vim.keymap.set("n", "<leader>fk", builtin.keymaps)
 
-local wk = require("which-key")
-wk.register({
-    f = {
-        name = "find",
-        f = "file",
-        l = "live grep",
-        g = "in git",
-        o = "old",
-        s = "grep string",
-        c = "command history",
-        q = "quickfix",
-        j = "jumplist",
-        k = "keymaps",
-    }
-}, {prefix = "<leader>"})
-
+-- local wk = require("which-key")
+-- wk.register({
+--     f = {
+--         name = "find",
+--         f = "file",
+--         l = "live grep",
+--         g = "in git",
+--         o = "old",
+--         s = "grep string",
+--         c = "command history",
+--         q = "quickfix",
+--         j = "jumplist",
+--         k = "keymaps",
+--     }
+-- }, {prefix = "<leader>"})

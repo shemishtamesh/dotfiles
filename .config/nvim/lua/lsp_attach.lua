@@ -33,30 +33,30 @@ return function(_, bufnr)
     -- telescope keymaps
     vim.keymap.set('n', '<Leader>fd', require('telescope.builtin').diagnostics)
 
-    local wk = require("which-key")
-    wk.register({
-        l = {
-            name = "lsp",
-            s = "workspace symbol",
-            d = "open float diagnostic",
-            a = "code action",
-            e = "references",
-            n = "rename",
-            f = "format",
-            K = "hover",
-        },
-        -- d = {
-        --     name = "debug",
-        --     c = "continue",
-        --     o = "step over",
-        --     i = "step into",
-        --     u = "step out",
-        --     b = "break point",
-        --     l = "log point",
-        --     r = "run last",
-        --     q = "disconnect",
-        --     h = "hover",
-        -- },
-    }, {prefix = "<leader>"})
+    -- local wk = require("which-key")
+    -- wk.register({
+    --     l = {
+    --         name = "lsp",
+    --         s = "workspace symbol",
+    --         d = "open float diagnostic",
+    --         a = "code action",
+    --         e = "references",
+    --         n = "rename",
+    --         f = "format",
+    --         K = "hover",
+    --     },
+    --     -- d = {
+    --     --     name = "debug",
+    --     --     c = "continue",
+    --     --     o = "step over",
+    --     --     i = "step into",
+    --     --     u = "step out",
+    --     --     b = "break point",
+    --     --     l = "log point",
+    --     --     r = "run last",
+    --     --     q = "disconnect",
+    --     --     h = "hover",
+    --     -- },
+    -- }, {prefix = "<leader>"})
 end
 

@@ -2,8 +2,8 @@
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias grep='grep --color=auto'
-    alias ls='ls --color=auto'
-    alias els='ls -Ashlb --author --color=always --time-style=full-iso'
+    alias ls='ls --color=always'
+    alias l='exa --color=always --git --icons=always'
 fi
 
 # History in cache directory:
@@ -75,7 +75,7 @@ bindkey '^e' edit-command-line
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # connect to work pc
-alias work="ssh -i $HOME/.ssh/work_key shemishtamesh@192.168.1.3 -t '/opt/homebrew/bin/tmux -u new-session -As default'"
+alias work="ssh -i $HOME/.ssh/work_key shemishtamesh@192.168.1.3 -t '/opt/homebrew/bin/tmux -u attach || /opt/homebrew/bin/tmux -u new-session -As default'"
 
 # copy (y) and paste (p)
 alias y='xsel --clipboard --input'
@@ -243,10 +243,15 @@ alias n="nvim"
 
 # plugins
 eval "$(starship init zsh)"
+
 eval "$(zoxide init zsh)"
-source <(fzf --zsh)
+
+source $HOME/.config/zsh/fzf.zsh
+
 source <(atuin init zsh)
+
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 ZSH_HIGHLIGHT_STYLES[comment]='fg=gray,bold'
 
